@@ -1,0 +1,41 @@
+<Application x:Class="PixelfansDashboard.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:local="clr-namespace:PixelfansDashboard" StartupUri="MainWindow.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xct="clr-namespace:CommunityToolkit.Mvvm.ComponentModel;assembly=CommunityToolkit.Mvvm"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type local:PixelViewModel}">
+                <Border BorderBrush="LightGray" BorderThickness="1">
+                    <Button Width="8" Height="8" Command="{Binding LightCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Black" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsLit}" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.ToolTip>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Location.X}"/>
+                                <TextBlock Grid.Column="1" Text=","/>
+                                <TextBlock Grid.Column="2" Text="{Binding Location.Y}"/>
+                            </Grid>
+                        </Button.ToolTip>
+                    </Button>
+                </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
