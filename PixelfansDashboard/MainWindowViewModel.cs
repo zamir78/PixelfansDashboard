@@ -20,6 +20,7 @@ namespace PixelfansDashboard
             PixelCollectionList = new ObservableCollection<PixelViewModel>();
             UploadCommand = new RelayCommand(UploadCommandHandler);
             DownloadCommand = new RelayCommand(DownloadCommandHandler);
+            PlayCommand = new RelayCommand(PlayCommandHandler);
             NumberOfRows = 5;
             NumberOfCols = 5;
             InitPixels();
@@ -68,8 +69,10 @@ namespace PixelfansDashboard
             }
         }
 
+        public bool IsPlaying { get; set; }
         public RelayCommand UploadCommand { get; set; }
         public RelayCommand DownloadCommand { get; set; }
+        public RelayCommand PlayCommand { get; set; }
 
         private void InitPixels()
         {
@@ -81,31 +84,40 @@ namespace PixelfansDashboard
             }
         }
 
+        PixelCollection pc;
         private void UploadCommandHandler()
         {
-            PixelCollection pc = new PixelCollection() { Width = NumberOfCols,Height=NumberOfRows };
+            pc = new PixelCollection();
+            pc.Data.Columns = NumberOfCols;
+            pc.Data.Rows = NumberOfRows;
             foreach (PixelViewModel pixel in PixelCollectionList)
-                pc.PixelList.Add(new Pixel() { IsLit = pixel.IsLit, X = (int)pixel.Location.X, Y = (int)pixel.Location.Y });
+                pc.PixelList.Add(new Pixel() { IsLit = pixel.IsLit, X = (int)pixel.Location.X+1, Y = (int)pixel.Location.Y+1 });
 
             string json = JsonConvert.SerializeObject(pc);
+            pc.IsPlaying = IsPlaying;
             _client.Update("PixelImage", pc);
         }
 
         private void DownloadCommandHandler()
         {
-            PixelCollection pcLoad = _client.Get("PixelImage").ResultAs<PixelCollection>();
-            _numberOfRows = pcLoad.Height;
+            pc = _client.Get("PixelImage").ResultAs<PixelCollection>();
+            _numberOfRows = pc.Data.Rows;
             OnPropertyChanged("NumberOfRows");
-            _numberOfCols = pcLoad.Width;
+            _numberOfCols = pc.Data.Columns;
             OnPropertyChanged("NumberOfCols");
             PixelCollectionList = new ObservableCollection<PixelViewModel>();
             
-            foreach (Pixel pixel in pcLoad.PixelList)
+            foreach (Pixel pixel in pc.PixelList)
             {
                 PixelCollectionList.Add(new PixelViewModel() { IsLit = pixel.IsLit ,Location = new System.Windows.Point(pixel.X, pixel.Y)});
             }
 
             OnPropertyChanged("PixelCollectionList");
+        }
+
+        private void PlayCommandHandler()
+        {
+            UploadCommandHandler();
         }
     }
 }

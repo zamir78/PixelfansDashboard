@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PixelfansDashboard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="800" Background="White">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -22,6 +22,8 @@
             <Slider Minimum="5" Maximum="80" Value="{Binding NumberOfCols}" HorizontalAlignment="Stretch" Width="200"/>
             <Button Content="Upload" Command="{Binding UploadCommand}" Margin="10,0"/>
             <Button Content="Download" Command="{Binding DownloadCommand}"/>
+            <CheckBox Content="Play" IsChecked="{Binding IsPlaying}" VerticalAlignment="Center" Margin="10,0" 
+                      Command="{Binding PlayCommand}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.RowSpan="2" Orientation="Vertical">
             <TextBlock Text="{Binding NumberOfRows}" Width="20" Margin="0,10,0,10"/>
