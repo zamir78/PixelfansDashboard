@@ -2,10 +2,12 @@
 using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace PixelfansDashboard
             UploadCommand = new RelayCommand(UploadCommandHandler);
             DownloadCommand = new RelayCommand(DownloadCommandHandler);
             PlayCommand = new RelayCommand(PlayCommandHandler);
+            LoadImageCommand = new RelayCommand(LoadImageCommandHandler);
             NumberOfRows = 5;
             NumberOfCols = 5;
             InitPixels();
@@ -37,8 +40,8 @@ namespace PixelfansDashboard
         public int NumberOfRows
         {
             get { return _numberOfRows; }
-            set 
-            { 
+            set
+            {
                 _numberOfRows = value;
                 OnPropertyChanged();
                 InitPixels();
@@ -49,8 +52,8 @@ namespace PixelfansDashboard
         public int NumberOfCols
         {
             get { return _numberOfCols; }
-            set 
-            { 
+            set
+            {
                 _numberOfCols = value;
                 OnPropertyChanged();
                 InitPixels();
@@ -62,8 +65,8 @@ namespace PixelfansDashboard
         public ObservableCollection<PixelViewModel> PixelCollectionList
         {
             get { return _pixelCollectionList; }
-            set 
-            { 
+            set
+            {
                 _pixelCollectionList = value;
                 OnPropertyChanged();
             }
@@ -73,14 +76,15 @@ namespace PixelfansDashboard
         public RelayCommand UploadCommand { get; set; }
         public RelayCommand DownloadCommand { get; set; }
         public RelayCommand PlayCommand { get; set; }
+        public RelayCommand LoadImageCommand { get; set; }
 
         private void InitPixels()
         {
             PixelCollectionList = new ObservableCollection<PixelViewModel>();
-            for(int i = 0; i < NumberOfCols; i++)
+            for (int i = 0; i < NumberOfCols; i++)
             {
-                for(int j = 0; j < NumberOfRows; j++)
-                    PixelCollectionList.Add( new PixelViewModel() {Location = new System.Windows.Point(i, j) });
+                for (int j = 0; j < NumberOfRows; j++)
+                    PixelCollectionList.Add(new PixelViewModel() { Location = new System.Windows.Point(i, j) });
             }
         }
 
@@ -91,7 +95,7 @@ namespace PixelfansDashboard
             pc.Data.Columns = NumberOfCols;
             pc.Data.Rows = NumberOfRows;
             foreach (PixelViewModel pixel in PixelCollectionList)
-                pc.PixelList.Add(new Pixel() { IsLit = pixel.IsLit, X = (int)pixel.Location.X+1, Y = (int)pixel.Location.Y+1 });
+                pc.PixelList.Add(new Pixel() { IsLit = pixel.IsLit, X = (int)pixel.Location.X + 1, Y = (int)pixel.Location.Y + 1 });
 
             string json = JsonConvert.SerializeObject(pc);
             pc.IsPlaying = IsPlaying;
@@ -106,10 +110,10 @@ namespace PixelfansDashboard
             _numberOfCols = pc.Data.Columns;
             OnPropertyChanged("NumberOfCols");
             PixelCollectionList = new ObservableCollection<PixelViewModel>();
-            
+
             foreach (Pixel pixel in pc.PixelList)
             {
-                PixelCollectionList.Add(new PixelViewModel() { IsLit = pixel.IsLit ,Location = new System.Windows.Point(pixel.X, pixel.Y)});
+                PixelCollectionList.Add(new PixelViewModel() { IsLit = pixel.IsLit, Location = new System.Windows.Point(pixel.X, pixel.Y) });
             }
 
             OnPropertyChanged("PixelCollectionList");
@@ -118,6 +122,25 @@ namespace PixelfansDashboard
         private void PlayCommandHandler()
         {
             UploadCommandHandler();
+        }
+
+        private void LoadImageCommandHandler()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "bmp files (*.bmp)|*.bmp";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Bitmap bmp = new Bitmap(openFileDialog.FileName);
+                Bitmap scaled = new Bitmap(bmp, NumberOfCols, NumberOfRows);
+                scaled.Save($@"C:\temp\Scaled.bmp");
+                for (int i = 0; i < scaled.Height; i++)
+                    for (int j = 0; j < scaled.Width; j++)
+                    {
+                        var color = scaled.GetPixel(j, i);
+                        PixelCollectionList[j + (i * scaled.Width)].IsLit = color.R > 220;
+                        Console.WriteLine(j + (i * scaled.Width));
+                    }
+            }
         }
     }
 }
