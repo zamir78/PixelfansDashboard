@@ -4,18 +4,80 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PFManager"
+        xmlns:views="clr-namespace:PFManager.Views"
+        xmlns:viewModels="clr-namespace:PFManager.ViewModels"
         mc:Ignorable="d"
         Title="כרטיסיות מעקב הוצאות חשמליות" Height="450" Width="800">
-    <Grid>
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid FlowDirection="RightToLeft">
         <TabControl>
-            <TabItem Header="מסירה">
-                
+            <TabItem Header="מסירה" FontSize="24" FontWeight="SemiBold">
+                <Grid ShowGridLines="True" TextBlock.FontSize="20" TextBlock.FontWeight="Normal">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="סוג הוצאה" Margin="5"/>
+                    <ComboBox Grid.Column="1" Width="130" Margin="5"/>
+
+                    <TextBlock Grid.Row="1" Text="מספר היתר" Margin="5"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Width="130" Margin="5"/>
+
+                    <TextBlock Grid.Row="2" Text="תיאור העבודה" Margin="5"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+
+                    <TextBlock Grid.Row="3" Text="הזנות חשמליות" Margin="5"/>
+                    <ListView Grid.Row="3" Grid.Column="1" FontSize="16" MaxHeight="80" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="5">
+                        <!--<ListView.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>-->
+                        <ListViewItem>
+                            <CheckBox Content="KKS1"/>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <CheckBox Content="KKS2"/>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <CheckBox Content="KKS3"/>
+                        </ListViewItem>
+                    </ListView>
+
+                    <TextBlock Grid.Row="4" Text="תורן מבצע" Margin="5"/>
+                    <ComboBox Grid.Column="1" Grid.Row="4" Width="130" Margin="5"/>
+                    <TextBox Grid.Row="4" Grid.Column="2" Width="130" Margin="5" />
+                    <TextBlock Grid.Row="5" Text="מקבל המתקן" Margin="5"/>
+                    <ComboBox Grid.Column="1" Grid.Row="5" Width="130" Margin="5"/>
+                    <TextBlock Grid.Row="6" Text="מורשה-על" Margin="5"/>
+                    <ComboBox Grid.Column="1" Grid.Row="6" Width="130" Margin="5"/>
+                </Grid>
             </TabItem>
-            <TabItem Header="החזרה">
+            <TabItem Header="החזרה" FontSize="24" FontWeight="SemiBold">
 
             </TabItem>
-            <TabItem Header="שאילתות">
+            <TabItem Header="שאילתות" FontSize="24" FontWeight="SemiBold">
 
+            </TabItem>
+            <TabItem Header="DB Editing" FontSize="20" FontWeight="SemiBold">
+                <TabControl>
+                    <TabItem Header="User Management">
+                        <views:AddNewUserView/>
+                    </TabItem>
+                </TabControl>
             </TabItem>
         </TabControl>
     </Grid>

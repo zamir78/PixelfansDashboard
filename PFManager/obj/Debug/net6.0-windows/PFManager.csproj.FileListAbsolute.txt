@@ -21,3 +21,9 @@ C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\refint\PFMan
 C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\PFManager.pdb
 C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\PFManager.genruntimeconfig.cache
 C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\ref\PFManager.dll
+C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\Views\AddNewUserView.g.cs
+C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\Views\AddNewUserView.baml
+C:\GitSources\PixelfansDashboard\PFManager\bin\Debug\net6.0-windows\PropertyTools.dll
+C:\GitSources\PixelfansDashboard\PFManager\bin\Debug\net6.0-windows\PropertyTools.Wpf.dll
+C:\GitSources\PixelfansDashboard\PFManager\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\GitSources\PixelfansDashboard\PFManager\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll

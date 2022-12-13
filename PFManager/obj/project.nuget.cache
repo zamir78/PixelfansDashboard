@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "KiRROGrdUycck+MeJW6C1CE6vCylK9FOwUA2pYpQtXNEJ8lKlVdZ4vVZa02OFoU/IgYDc6/ycOe4iSUal2h7lA==",
+  "dgSpecHash": "weAMc4lsZrc0OziGBJ6D9fM0Qo2NrDVFfKVfvWQPJ74FNSLu6oAZR6jWEmGMTNTDZFNkrO6zPfk0baG8Tvn7yg==",
   "success": true,
   "projectFilePath": "C:\\GitSources\\PixelfansDashboard\\PFManager\\PFManager.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\zamar\\.nuget\\packages\\litedb\\5.0.13\\litedb.5.0.13.nupkg.sha512"
+    "C:\\Users\\zamar\\.nuget\\packages\\communitytoolkit.mvvm\\8.0.0\\communitytoolkit.mvvm.8.0.0.nupkg.sha512",
+    "C:\\Users\\zamar\\.nuget\\packages\\litedb\\5.0.13\\litedb.5.0.13.nupkg.sha512",
+    "C:\\Users\\zamar\\.nuget\\packages\\propertytools\\3.1.0\\propertytools.3.1.0.nupkg.sha512",
+    "C:\\Users\\zamar\\.nuget\\packages\\propertytools.wpf\\3.1.0\\propertytools.wpf.3.1.0.nupkg.sha512",
+    "C:\\Users\\zamar\\.nuget\\packages\\system.componentmodel.annotations\\4.6.0\\system.componentmodel.annotations.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }

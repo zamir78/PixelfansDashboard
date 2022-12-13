@@ -45,9 +45,17 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "LiteDB": {
               "target": "Package",
               "version": "[5.0.13, )"
+            },
+            "PropertyTools.Wpf": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             }
           },
           "imports": [
