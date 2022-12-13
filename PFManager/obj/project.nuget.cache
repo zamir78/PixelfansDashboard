@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KiRROGrdUycck+MeJW6C1CE6vCylK9FOwUA2pYpQtXNEJ8lKlVdZ4vVZa02OFoU/IgYDc6/ycOe4iSUal2h7lA==",
+  "success": true,
+  "projectFilePath": "C:\\GitSources\\PixelfansDashboard\\PFManager\\PFManager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zamar\\.nuget\\packages\\litedb\\5.0.13\\litedb.5.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

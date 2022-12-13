@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "PFManager/1.0.0": {
+        "dependencies": {
+          "LiteDB": "5.0.13"
+        },
+        "runtime": {
+          "PFManager.dll": {}
+        }
+      },
+      "LiteDB/5.0.13": {
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "assemblyVersion": "5.0.13.0",
+            "fileVersion": "5.0.13.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PFManager/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LiteDB/5.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g1H9eq8G7YrVH9U+xFz52uONqqJthyK3ZHojYkX8lDJYdB6NqX9zHb7Hn1j+9SWiDvw50bngNfvxIams0pAotg==",
+      "path": "litedb/5.0.13",
+      "hashPath": "litedb.5.0.13.nupkg.sha512"
+    }
+  }
+}

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelfansDashboard", "PixelfansDashboard\PixelfansDashboard.csproj", "{56EA70B5-A6C6-49E0-A81E-D776DFE14DA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFManager", "PFManager\PFManager.csproj", "{1EC7E0F3-7D09-4A27-BDEC-9CD996120145}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{56EA70B5-A6C6-49E0-A81E-D776DFE14DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56EA70B5-A6C6-49E0-A81E-D776DFE14DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56EA70B5-A6C6-49E0-A81E-D776DFE14DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EC7E0F3-7D09-4A27-BDEC-9CD996120145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EC7E0F3-7D09-4A27-BDEC-9CD996120145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EC7E0F3-7D09-4A27-BDEC-9CD996120145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EC7E0F3-7D09-4A27-BDEC-9CD996120145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
