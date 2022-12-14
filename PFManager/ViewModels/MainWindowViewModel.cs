@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PFManager.ViewModels
 {
@@ -24,6 +25,7 @@ namespace PFManager.ViewModels
             RemoveFeedingCommand = new RelayCommand(RemoveFeedingCommandHandler);
 
             Users = DataAccess.DataBaseAPI.LoadDocuments<User>(DataAccess.Users);
+            Feedings = DataAccess.DataBaseAPI.LoadDocuments<EcFeeding>(DataAccess.Feedings);
         }
 
         public string? UserID { get; set; }
@@ -61,7 +63,10 @@ namespace PFManager.ViewModels
         public RelayCommand AddUserCommand { get; set; }
         private void AddUserCommandHandler()
         {
-            DataAccess.DataBaseAPI.InsertDocument(DataAccess.Users, UserAddRemove);
+            if (Users.Exists(x => x.IdNumber == UserAddRemove.IdNumber) == false)
+                DataAccess.DataBaseAPI.InsertDocument(DataAccess.Users, UserAddRemove);
+            else
+                MessageBox.Show("A user with this ID number already exists");
         }
 
         public RelayCommand RemoveUserCommand { get; set; }
@@ -80,7 +85,10 @@ namespace PFManager.ViewModels
         public RelayCommand AddFeedingCommand { get; set; }
         private void AddFeedingCommandHandler()
         {
-            DataAccess.DataBaseAPI.InsertDocument(DataAccess.Feedings, FeedAddRemove);
+            if (Feedings.Exists(x => x.KKS == FeedAddRemove.KKS) == false)
+                DataAccess.DataBaseAPI.InsertDocument(DataAccess.Feedings, FeedAddRemove);
+            else
+                MessageBox.Show("A feeding with this KKS already exists");
         }
 
         public RelayCommand RemoveFeedingCommand { get; set; }
@@ -89,7 +97,7 @@ namespace PFManager.ViewModels
             var feedingToRemove = Feedings.Single(x => x.KKS == KKSID);
             if (feedingToRemove != null)
             {
-                DataAccess.DataBaseAPI.DeleteRecord<User>(DataAccess.Users, feedingToRemove.Id);
+                DataAccess.DataBaseAPI.DeleteRecord<EcFeeding>(DataAccess.Feedings, feedingToRemove.Id);
                 Feedings.Remove(feedingToRemove);
                 KKSID = null;
                 OnPropertyChanged("KKSID");

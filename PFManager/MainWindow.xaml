@@ -94,7 +94,7 @@
                             <Button Content="Add Feeding" Command="{Binding AddFeedingCommand}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,5">
                                 <TextBlock Text="KKS ID :" />
-                                <TextBox Text="{Binding FeedingID}" Width="130"/>
+                                <TextBox Text="{Binding KKSID}" Width="130"/>
                                 <Button Content="Remove Feeding" Command="{Binding RemoveFeedingCommand}"/>
                             </StackPanel>
                         </StackPanel>
