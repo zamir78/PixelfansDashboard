@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:PFManager"
         xmlns:views="clr-namespace:PFManager.Views"
         xmlns:viewModels="clr-namespace:PFManager.ViewModels"
+        xmlns:propGrid="http://propertytools.org/wpf"
         mc:Ignorable="d"
-        Title="כרטיסיות מעקב הוצאות חשמליות" Height="450" Width="800">
+        Title="כרטיסיות מעקב הוצאות חשמליות" Height="Auto" Width="Auto">
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
@@ -72,10 +73,31 @@
             <TabItem Header="שאילתות" FontSize="24" FontWeight="SemiBold">
 
             </TabItem>
-            <TabItem Header="DB Editing" FontSize="20" FontWeight="SemiBold">
-                <TabControl>
-                    <TabItem Header="User Management">
-                        <views:AddNewUserView/>
+            <TabItem Header="DB Management" FontSize="20" FontWeight="SemiBold">
+                <TabControl FlowDirection="LeftToRight">
+                    <TabItem Header="Users">
+                        <StackPanel Orientation="Vertical">
+                            <propGrid:PropertyGrid HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch" SelectedObject="{Binding UserAddRemove}"/>
+                            <Button Content="Add User" Command="{Binding AddUserCommand}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Button Content="Remove User" Command="{Binding RemoveUserCommand}"/>
+                                <TextBox Text="{Binding UserID}" Width="130"/>
+                                <TextBlock Text="User ID :" />
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Feedings">
+                        <StackPanel Orientation="Vertical">
+                            <propGrid:PropertyGrid HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch" SelectedObject="{Binding FeedAddRemove}"/>
+                            <Button Content="Add Feeding" Command="{Binding AddFeedingCommand}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,5">
+                                <Button Content="Remove Feeding" Command="{Binding RemoveFeedingCommand}"/>
+                                <TextBox Text="{Binding FeedingID}" Width="130"/>
+                                <TextBlock Text="KKS ID :" />
+                            </StackPanel>
+                        </StackPanel>
                     </TabItem>
                 </TabControl>
             </TabItem>

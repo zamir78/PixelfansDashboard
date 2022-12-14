@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\GitSources\PixelfansDashboard\PFManager\App.xaml
-21547389916
+2-286723931
 
-10-164361673
+11-1754903031
 198-973020913
-MainWindow.xaml;Views\AddNewUserView.xaml;
+MainWindow.xaml;Views\UserControl1.xaml;
 
 False
 

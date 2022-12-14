@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PFManager.Views
 {
     /// <summary>
-    /// Interaction logic for AddNewUserView.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class AddNewUserView : UserControl
+    public partial class UserControl1 : UserControl
     {
-        public AddNewUserView()
+        public UserControl1()
         {
             InitializeComponent();
         }
