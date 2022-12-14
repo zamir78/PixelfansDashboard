@@ -26,7 +26,7 @@ namespace PFManager.ViewModels
             Users = DataAccess.DataBaseAPI.LoadDocuments<User>(DataAccess.Users);
         }
 
-        public string UserID { get; set; }
+        public string? UserID { get; set; }
 
         private User _userAddRemove = null!;
         public User UserAddRemove 
@@ -41,7 +41,7 @@ namespace PFManager.ViewModels
 
         public List<User> Users { get; private set; }
 
-        public string FeedingID { get; set; }
+        public string? KKSID { get; set; }
 
         private EcFeeding _feedAddRemove = null!;
         public EcFeeding FeedAddRemove
@@ -53,6 +53,8 @@ namespace PFManager.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public List<EcFeeding> Feedings { get; private set; }
 
         #region Commands
 
@@ -70,6 +72,8 @@ namespace PFManager.ViewModels
             {
                 DataAccess.DataBaseAPI.DeleteRecord<User>(DataAccess.Users, userToRemove.Id);
                 Users.Remove(userToRemove);
+                UserID = null;
+                OnPropertyChanged("UserID");
             }
         }
 
@@ -82,6 +86,14 @@ namespace PFManager.ViewModels
         public RelayCommand RemoveFeedingCommand { get; set; }
         private void RemoveFeedingCommandHandler()
         {
+            var feedingToRemove = Feedings.Single(x => x.KKS == KKSID);
+            if (feedingToRemove != null)
+            {
+                DataAccess.DataBaseAPI.DeleteRecord<User>(DataAccess.Users, feedingToRemove.Id);
+                Feedings.Remove(feedingToRemove);
+                KKSID = null;
+                OnPropertyChanged("KKSID");
+            }
         }
 
         #endregion

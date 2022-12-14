@@ -81,9 +81,9 @@
                                VerticalAlignment="Stretch" SelectedObject="{Binding UserAddRemove}"/>
                             <Button Content="Add User" Command="{Binding AddUserCommand}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Button Content="Remove User" Command="{Binding RemoveUserCommand}"/>
-                                <TextBox Text="{Binding UserID}" Width="130"/>
                                 <TextBlock Text="User ID :" />
+                                <TextBox Text="{Binding UserID}" Width="130"/>
+                                <Button Content="Remove User" Command="{Binding RemoveUserCommand}"/>
                             </StackPanel>
                         </StackPanel>
                     </TabItem>
@@ -93,9 +93,9 @@
                                VerticalAlignment="Stretch" SelectedObject="{Binding FeedAddRemove}"/>
                             <Button Content="Add Feeding" Command="{Binding AddFeedingCommand}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <Button Content="Remove Feeding" Command="{Binding RemoveFeedingCommand}"/>
-                                <TextBox Text="{Binding FeedingID}" Width="130"/>
                                 <TextBlock Text="KKS ID :" />
+                                <TextBox Text="{Binding FeedingID}" Width="130"/>
+                                <Button Content="Remove Feeding" Command="{Binding RemoveFeedingCommand}"/>
                             </StackPanel>
                         </StackPanel>
                     </TabItem>
